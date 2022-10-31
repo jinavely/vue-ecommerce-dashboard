@@ -1,18 +1,5 @@
 <template>
-    <grid-layout
-        :layout.sync="totalData"
-        :col-num="10"
-        :row-height="60"
-        :is-draggable="draggable"
-        :is-resizable="resizable"
-        :is-mirrored="mirrored"
-        :responsive="responsive"
-        :vertical-compact="true"
-        :use-css-transforms="true"
-        :auto-size="false"
-        :margin="[20, 20]"
-        @breakpoint-changed="breakpointChangedEvent"
-    >
+    <div class="status-board">
         <grid-item
             v-for="item in totalData"
             :key="item.i"
@@ -40,37 +27,25 @@
                 <span class="rating__standard">({{ item.standard }})</span>
             </p>
         </grid-item>
-    </grid-layout>
+    </div>
 </template>
 
 <script>
-import { GridLayout, GridItem } from 'vue-grid-layout';
+import { GridItem } from 'vue-grid-layout';
 import * as _ from 'lodash';
 
 export default {
-    name: 'Footer',
-    components: {
-        GridLayout,
-        GridItem,
+    name: 'StatusBoard',
+    props: {
+        layout: {
+            type: Array,
+        },
     },
+    components: { GridItem },
     data() {
         return {
             // data join
             totalData: [],
-
-            // layout
-            layoutBoard: [
-                { x: 0, y: 0, w: 2, h: 2, i: '0', static: false },
-                { x: 2, y: 0, w: 2, h: 2, i: '1', static: false },
-                { x: 4, y: 0, w: 2, h: 2, i: '2', static: false },
-                { x: 6, y: 0, w: 2, h: 2, i: '3', static: false },
-                { x: 8, y: 0, w: 2, h: 2, i: '4', static: false },
-            ],
-            draggable: true,
-            mirrored: false,
-            resizable: true,
-            responsive: true,
-            index: 0,
 
             // real data
             data: [
@@ -120,84 +95,65 @@ export default {
                     standard: '전년대비',
                 },
             ],
+            draggable: true,
+            mirrored: false,
+            resizable: true,
+            responsive: true,
+            index: 0,
+
         };
     },
     created() {
-        const layout = this.layoutBoard.map((el) => el);
+        const layout = this.layout.slice(0, 5).map((el) => el);
         const data = this.data.map((el) => el);
         this.totalData = _.merge(layout, data);
     },
-    methods: {
-        breakpointChangedEvent: function (newBreakpoint, newLayout) {
-            console.log(
-                'BREAKPOINT CHANGED breakpoint=',
-                newBreakpoint,
-                ', layout: ',
-                newLayout,
-            );
-        },
-    },
+    methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-.vue-grid-layout {
-    margin: -20px;
-    ::v-deep {
-        .vue-grid-item {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 1px solid #bdbdbd;
-            border-radius: 10px;
-            padding: 16px 30px;
-            &.vue-grid-placeholder {
-                background: #aaa;
+::v-deep {
+    .vue-grid-item {
+        h3 {
+            font-size: 18px;
+            line-height: 23px;
+        }
+        .total {
+            margin-top: 8px;
+            &__number {
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 38px;
+                margin-right: 8px;
             }
-
-            h3 {
+            &__unit {
                 font-size: 18px;
-                line-height: 23px;
+                line-height: 29px;
             }
-            .total {
-                margin-top: 8px;
-                &__number {
-                    font-weight: 600;
-                    font-size: 24px;
-                    line-height: 38px;
-                    margin-right: 8px;
+        }
+        .rating {
+            &__info {
+                font-size: 14px;
+                line-height: 19px;
+                color: #31bc00;
+                margin-right: 10px;
+                &:before {
+                    content: '▲';
+                    margin-right: 3px;
                 }
-                &__unit {
-                    font-size: 18px;
-                    line-height: 29px;
-                }
-            }
-            .rating {
-                &__info {
-                    font-size: 14px;
-                    line-height: 19px;
-                    color: #31bc00;
-                    margin-right: 10px;
+                &.down {
+                    color: #eb410b;
                     &:before {
-                        content: '▲';
-                        margin-right: 3px;
-                    }
-                    &.down {
-                        color: #eb410b;
-                        &:before {
-                            content: '▼';
-                        }
+                        content: '▼';
                     }
                 }
-                &__standard {
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 23px;
-                    color: #6a6a6a;
-                }
+            }
+            &__standard {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 23px;
+                color: #6a6a6a;
             }
         }
     }

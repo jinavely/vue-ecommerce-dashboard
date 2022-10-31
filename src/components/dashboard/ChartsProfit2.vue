@@ -1,7 +1,7 @@
 <template>
     <div class="charts-profit">
         <grid-item
-            v-for="item in layout.slice(9, 10)"
+            v-for="item in layout.slice(10, 11)"
             :key="item.i"
             :x="item.x"
             :y="item.y"
@@ -16,7 +16,7 @@
 <script>
 import { GridItem } from 'vue-grid-layout';
 export default {
-    name: 'ChartsProfit',
+    name: 'ChartsProfit2',
     props: {
         layout: {
             type: Array,
