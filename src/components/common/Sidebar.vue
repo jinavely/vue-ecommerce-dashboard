@@ -97,6 +97,11 @@ export default {
         // Nav Active
         this.menuActionClick();
     },
+    watch: {
+        $route(to, form) {
+            if (to.path !== form.path) this.menuActionClick();
+        },
+    },
     methods: {
         // Nav Active
         menuActionClick() {
@@ -138,6 +143,7 @@ export default {
 .slidebar {
     .v-navigation-drawer {
         border: none;
+        height: 100% !important;
     }
     .v-navigation-drawer__content {
         > .v-list {
