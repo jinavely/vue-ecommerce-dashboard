@@ -1,96 +1,127 @@
 <template>
-    <v-row md="auto">
-        <v-col>
-            <v-card outlined>
-                <h3>미처리현황</h3>
-                <dl class="listItems">
-                    <div>
-                        <dt>송장출력예정</dt>
-                        <dd>
-                            일반 {{ statusUntreatedData.productUnit }} / 합포
-                            {{ statusUntreatedData.productPlural }}
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>송장전송대기</dt>
-                        <dd>
-                            {{ statusUntreatedData.sendInvoiceNum }} ({{
-                                statusUntreatedData.sendInvoiceDate
-                            }}
-                            ~)
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>배송누락/분실</dt>
-                        <dd class="point">
-                            {{ statusUntreatedData.missingDeliveryNum }} ({{
-                                statusUntreatedData.missingDeliveryDate
-                            }}
-                            ~)
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>취소확인</dt>
-                        <dd>
-                            {{ statusUntreatedData.cncltCnfrmNum }} ({{
-                                statusUntreatedData.cncltCnfrmDate
-                            }}
-                            ~)
-                        </dd>
-                    </div>
-                </dl>
-            </v-card>
-        </v-col>
-        <v-col>
-            <v-card outlined>
-                <h3>반품현황</h3>
-                <dl class="listItems">
-                    <div>
-                        <dt>최근3일간 미취소</dt>
-                        <dd>
-                            {{ statusReturnData.uncancelledNum }} ({{
-                                statusReturnData.uncancelledDate
-                            }}
-                            ~)
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>배송 후 취소</dt>
-                        <dd>
-                            {{ statusReturnData.cncltDlvryNum }} ({{
-                                statusReturnData.cncltDlvryDate
-                            }}
-                            ~)
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>소셜 환불</dt>
-                        <dd>
-                            {{ statusReturnData.socialRefundNum }} ({{
-                                statusReturnData.socialRefundDate
-                            }}
-                            ~)
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>반품장기지연</dt>
-                        <dd>
-                            {{ statusReturnData.lngdlRtrnNum }}
-                            ({{
-                                `${statusReturnData.lngdlRtrnStartDate} ~  ${statusReturnData.lngdlRtrnEndDate} `
-                            }})
-                        </dd>
-                    </div>
-                </dl>
-            </v-card>
-        </v-col>
-    </v-row>
+    <Fragment>
+        <v-row md="auto">
+            <v-col>
+                <v-card outlined>
+                    <h3>미처리현황</h3>
+                    <dl class="listItems">
+                        <div>
+                            <dt>송장출력예정</dt>
+                            <dd>
+                                일반 {{ statusUntreatedData.productUnit }} /
+                                합포
+                                {{ statusUntreatedData.productPlural }}
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>송장전송대기</dt>
+                            <dd>
+                                {{ statusUntreatedData.sendInvoiceNum }} ({{
+                                    statusUntreatedData.sendInvoiceDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )
+                                }}
+                                ~)
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>배송누락/분실</dt>
+                            <dd class="point">
+                                {{ statusUntreatedData.missingDeliveryNum }} ({{
+                                    statusUntreatedData.missingDeliveryDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )
+                                }}
+                                ~)
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>취소확인</dt>
+                            <dd>
+                                {{ statusUntreatedData.cncltCnfrmNum }} ({{
+                                    statusUntreatedData.cncltCnfrmDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )
+                                }}
+                                ~)
+                            </dd>
+                        </div>
+                    </dl>
+                </v-card>
+            </v-col>
+        </v-row>
+        <v-row md="auto">
+            <v-col>
+                <v-card outlined>
+                    <h3>반품현황</h3>
+                    <dl class="listItems">
+                        <div>
+                            <dt>최근3일간 미취소</dt>
+                            <dd>
+                                {{ statusReturnData.uncancelledNum }} ({{
+                                    statusReturnData.uncancelledDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )
+                                }}
+                                ~)
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>배송 후 취소</dt>
+                            <dd>
+                                {{ statusReturnData.cncltDlvryNum }} ({{
+                                    statusReturnData.cncltDlvryDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )
+                                }}
+                                ~)
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>소셜 환불</dt>
+                            <dd>
+                                {{ statusReturnData.socialRefundNum }} ({{
+                                    statusReturnData.socialRefundDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )
+                                }}
+                                ~)
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>반품장기지연</dt>
+                            <dd>
+                                {{ statusReturnData.lngdlRtrnNum }}
+                                ({{
+                                    `${statusReturnData.lngdlRtrnStartDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )} ~  ${statusReturnData.lngdlRtrnEndDate.replace(
+                                        /(\d)(?=(?:\d{2})+(?!\d))/g,
+                                        '$1/',
+                                    )} `
+                                }})
+                            </dd>
+                        </div>
+                    </dl>
+                </v-card>
+            </v-col>
+        </v-row>
+    </Fragment>
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment';
+
 export default {
     name: 'DashPlateComponent',
-    components: {},
+    components: { Fragment },
     data() {
         return {
             // 미처리 현황
@@ -118,24 +149,23 @@ export default {
             },
         };
     },
-    created() {},
     methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
 .v-sheet.v-card {
-    height: 204px;
     h3 {
         font-size: 18px;
         line-height: 26px;
     }
     .listItems {
-        margin-top: 20px;
+        margin-top: 10px;
         > div {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            margin: 8px 0;
+            margin: 2px 0;
 
             dt {
                 font-size: 15px;
@@ -155,10 +185,10 @@ export default {
         .listItems {
             > div {
                 dt {
-                    font-size: 12px;
+                    font-size: 13px;
                 }
                 dd {
-                    font-size: 12px;
+                    font-size: 13px;
                 }
             }
         }

@@ -1,23 +1,21 @@
 <template>
     <v-row class="dash-cards">
         <v-col md="7">
-            <v-card outlined> One of two columns </v-card>
+            <DahsGrsErnChartsComponent />
         </v-col>
         <v-col md="5">
-            <v-card outlined> One of two columns </v-card>
+            <DahsSlsTrndChartsComponent />
         </v-col>
     </v-row>
 </template>
 
 <script>
+import DahsGrsErnChartsComponent from './DahsGrsErnChartsComponent.vue';
+import DahsSlsTrndChartsComponent from './DahsSlsTrndChartsComponent.vue';
+
 export default {
     name: 'StatusPlateContainer',
-    props: {
-        layout: {
-            type: Array,
-        },
-    },
-    components: {},
+    components: { DahsGrsErnChartsComponent, DahsSlsTrndChartsComponent },
     data() {
         return {};
     },

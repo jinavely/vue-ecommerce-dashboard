@@ -6,12 +6,12 @@
             <span class="total__unit">{{ item.unit }}</span>
         </p>
         <p class="rating">
-            <span class="rating__info" v-if="item.up"
-                >+ {{ (item.info * 0.01) | percent(2) }}</span
-            >
-            <span class="rating__info down" v-else
-                >- {{ (item.info * 0.01) | percent(2) }}</span
-            >
+            <span class="rating__info" v-if="item.up">{{
+                (item.info * 0.01) | percent(2) | number('+0')
+            }}</span>
+            <span class="rating__info down" v-else>{{
+                (item.info * 0.01) | percent(2) | number('-0')
+            }}</span>
             <span class="rating__standard">({{ item.standard }})</span>
         </p>
     </v-card>
@@ -44,6 +44,7 @@ export default {
         line-height: 23px;
     }
     .total {
+        white-space: nowrap;
         margin-top: 8px;
         &__number {
             font-weight: 600;

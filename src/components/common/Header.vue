@@ -54,7 +54,7 @@ export default {
     .v-toolbar__content {
         align-items: flex-start;
         height: auto;
-        margin: 35px 54px 0 54px;
+        margin: 35px 54px 35px 54px;
         padding: 0;
         .header {
             display: flex;
