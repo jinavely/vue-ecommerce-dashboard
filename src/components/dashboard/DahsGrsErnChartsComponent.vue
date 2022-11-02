@@ -20,6 +20,7 @@ export default {
     components: {},
     data() {
         return {
+            myChart: null,
             // 판매액 데이터
             saleData: [
                 ['Price', 'Kind', 'Month'],
@@ -221,6 +222,7 @@ export default {
             };
 
             option && myChart.setOption(option);
+            this.myChart = myChart;
 
             //윈도우 사이즈가 변경될때마다 resize되도록 설정해준다
             window.onresize = function () {
@@ -243,12 +245,12 @@ export default {
         },
 
         // 기간선택
-        handleSelectPeriod(val) {
-            switch (val) {
+        handleSelectPeriod(params) {
+            switch (params) {
                 case '6개월':
                     break;
             }
-            this.chartFnctn();
+            this.myChart.update();
 
             console.log();
         },
