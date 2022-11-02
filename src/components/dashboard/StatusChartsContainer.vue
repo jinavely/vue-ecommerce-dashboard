@@ -24,4 +24,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 600px){
+    .dash-cards {
+        .col {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+}
+</style>

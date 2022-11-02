@@ -17,6 +17,7 @@
                 :items="desserts"
                 :items-per-page="5"
                 class="elevation-1"
+                item-key="number"
             >
                 <template v-slot:[`item.status`]="{ item }">
                     <div :color="getColor(item.status)" dark>
@@ -36,7 +37,7 @@ export default {
         return {
             search: '',
             headers: [
-                { text: '', align: 'center', value: 'number', width: '60px' },
+                { text: '순서', align: 'center', value: 'number', width: '80px' },
                 {
                     text: '주문자',
                     align: 'start',

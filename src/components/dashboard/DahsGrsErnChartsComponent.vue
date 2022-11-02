@@ -250,7 +250,7 @@ export default {
                 case '6개월':
                     break;
             }
-            this.myChart.update();
+            this.chartFnctn();
 
             console.log();
         },

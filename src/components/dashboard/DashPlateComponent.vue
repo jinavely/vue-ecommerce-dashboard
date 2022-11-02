@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <v-row md="auto">
+        <v-row>
             <v-col>
                 <v-card outlined>
                     <h3>미처리현황</h3>
@@ -53,7 +53,7 @@
                 </v-card>
             </v-col>
         </v-row>
-        <v-row md="auto">
+        <v-row>
             <v-col>
                 <v-card outlined>
                     <h3>반품현황</h3>

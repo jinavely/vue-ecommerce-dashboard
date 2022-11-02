@@ -38,6 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .v-sheet.v-card {
+    min-width: 200px;
     min-height: 140px;
     h3 {
         font-size: 18px;
