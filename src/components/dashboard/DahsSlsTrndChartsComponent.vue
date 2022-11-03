@@ -144,7 +144,7 @@ export default {
                     {
                         type: 'group',
                         left: 35,
-                        top: 55,
+                        top: 60,
                         children: [
                             {
                                 type: 'text',
@@ -160,7 +160,7 @@ export default {
                     {
                         type: 'group',
                         left: '36%',
-                        top: 55,
+                        top: 60,
                         children: [
                             {
                                 type: 'text',
