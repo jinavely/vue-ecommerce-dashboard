@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (max-width: 600px){
+@media (max-width: 960px) {
     .dash-cards {
         .col {
             flex: 0 0 100%;

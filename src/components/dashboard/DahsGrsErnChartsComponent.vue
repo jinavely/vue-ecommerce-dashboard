@@ -7,20 +7,20 @@
             filled
             label="기간선택"
             dense
-            @change="handleSelectPeriod"
+            @change="chartFnctn"
         ></v-select>
     </v-card>
 </template>
 
 <script>
 import * as echarts from 'echarts';
+let lineChart;
 
 export default {
     name: 'DahsGrsErnChartsComponent',
     components: {},
     data() {
         return {
-            myChart: null,
             // 판매액 데이터
             saleData: [
                 ['Price', 'Kind', 'Month'],
@@ -34,7 +34,9 @@ export default {
                 [25, 'sale', 'Jul'],
                 [41, 'sale', 'Aug'],
                 [30, 'sale', 'Sep'],
-                [20, 'sale', 'Dec'],
+                [20, 'sale', 'Oct'],
+                [10, 'sale', 'Nov'],
+                [30, 'sale', 'Dec'],
             ],
 
             // 기준판매액 데이터
@@ -50,32 +52,43 @@ export default {
                 [12, 'standardSale', 'Jul'],
                 [22, 'standardSale', 'Aug'],
                 [38, 'standardSale', 'Sep'],
-                [27, 'standardSale', 'Dec'],
+                [27, 'standardSale', 'Oct'],
+                [15, 'standardSale', 'Nov'],
+                [37, 'standardSale', 'Dec'],
             ],
 
             // 기간조회 데이터
-            items: ['연간', '6개월', '3개월', '1개월'],
+            items: ['연간', '최근 6개월', '최근 3개월', '최근 1개월'],
         };
     },
     mounted() {
         this.chartFnctn();
+
+        window.addEventListener('resize', this.handleChartResize);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handleChartResize);
     },
     methods: {
         // Charts
         chartFnctn() {
             const chartDom = document.getElementById('chartLine');
-            let myChart = echarts.init(chartDom);
+            lineChart = echarts.init(chartDom);
 
-            if (myChart != null && myChart != '' && myChart != undefined) {
-                myChart.dispose(); //차트돔이 먼저 생성된 경우 기존 돔을 삭제해준다
+            if (
+                lineChart != null &&
+                lineChart != '' &&
+                lineChart != undefined
+            ) {
+                lineChart.dispose(); //차트돔이 먼저 생성된 경우 기존 돔을 삭제해준다
             }
 
-            myChart = echarts.init(chartDom);
+            lineChart = echarts.init(chartDom);
 
             let option;
             option = {
                 animation: true,
-                animationDuration: 3000,
+                animationDuration: 2000,
                 dataset: [
                     {
                         id: 'dataset_sale_raw',
@@ -111,6 +124,10 @@ export default {
                 grid: {
                     top: 100,
                     left: 30,
+                    right: 0,
+                },
+                emphasis: {
+                    focus: 'series',
                 },
                 legend: {
                     data: ['판매액', '기준판매액'],
@@ -221,13 +238,13 @@ export default {
                 ],
             };
 
-            option && myChart.setOption(option);
-            this.myChart = myChart;
+            option && lineChart.setOption(option);
+            this.lineChart = lineChart;
+        },
 
-            //윈도우 사이즈가 변경될때마다 resize되도록 설정해준다
-            window.onresize = function () {
-                myChart.resize();
-            };
+        //윈도우 사이즈가 변경될때마다 resize되도록 설정해준다
+        handleChartResize() {
+            lineChart.resize();
         },
 
         // 총 수익
@@ -247,12 +264,11 @@ export default {
         // 기간선택
         handleSelectPeriod(params) {
             switch (params) {
-                case '6개월':
+                case '최근 6개월':
                     break;
             }
-            this.chartFnctn();
 
-            console.log();
+            console.log(params);
         },
     },
 };
@@ -264,11 +280,15 @@ export default {
 
     ::v-deep {
         #chartLine {
-            max-width: 900px;
             width: 100%;
             height: 400px;
 
-            ::v-deep canvas {
+            > div {
+                max-width: 100%;
+            }
+
+            canvas {
+                max-width: 100%;
                 border-radius: 12px;
             }
         }
@@ -276,6 +296,7 @@ export default {
             position: absolute;
             top: 16px;
             right: 30px;
+            max-width: 30%;
 
             .v-input__slot {
                 border-radius: 8px;

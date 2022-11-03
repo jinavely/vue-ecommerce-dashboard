@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar flat app height="85" color="#f5f5f5">
+    <v-app-bar flat app height="100" color="#f5f5f5">
         <div class="header">
             <div class="title-info">
                 <v-toolbar-title
