@@ -7,7 +7,7 @@
             filled
             label="기간선택"
             dense
-            @change="chartFnctn"
+            @change="selectPeriod"
         ></v-select>
     </v-card>
 </template>
@@ -57,6 +57,7 @@ export default {
 
             // 기간조회 데이터
             items: ['연간', '최근 6개월', '최근 3개월', '최근 1개월'],
+            datePeriod: 0,
         };
     },
     mounted() {
@@ -148,6 +149,7 @@ export default {
                         children: [
                             {
                                 type: 'text',
+                                cursor: 'default',
                                 style: {
                                     fill: '#000',
                                     overflow: 'break',
@@ -164,6 +166,7 @@ export default {
                         children: [
                             {
                                 type: 'text',
+                                cursor: 'default',
                                 style: {
                                     fill: '#000',
                                     overflow: 'break',
@@ -193,6 +196,17 @@ export default {
                         },
                     },
                 },
+                dataZoom: [
+                    {
+                        show: false,
+                        id: 'dataZoomX',
+                        type: 'slider',
+                        xAxisIndex: [0],
+                        filterMode: 'filter',
+                        start: this.datePeriod,
+                        end: 100,
+                    },
+                ],
                 xAxis: {
                     type: 'category',
                     name: '',
@@ -271,6 +285,31 @@ export default {
             return (Array.from(totalSaleNum).reduce((a, b) => a + b) * 1000)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
+
+        // 기간선택
+        selectPeriod(val) {
+            switch (val) {
+                case '연간':
+                    this.datePeriod = 0;
+                    break;
+                case '최근 6개월':
+                    this.datePeriod = 100 / 1.7;
+                    break;
+                case '최근 3개월':
+                    this.datePeriod = 100 / 1.2;
+                    break;
+                case '최근 1개월':
+                    this.datePeriod = 100 / 1;
+                    break;
+                default:
+                    this.datePeriod = 0;
+                    break;
+            }
+            if (barChart != null && barChart != '' && barChart != undefined) {
+                barChart.dispose(); //차트돔이 먼저 생성된 경우 기존 돔을 삭제해준다(instance제거)
+            }
+            this.chartFnctn();
         },
     },
 };
