@@ -10,8 +10,9 @@
                         v-model="selected"
                         :headers="headers"
                         :items="desserts"
-                        item-key="number"
+                        item-key="sn"
                         :items-per-page="5"
+                        show-select
                         class="elevation-1"
                         loading-text="로딩중..."
                         no-data-text="데이터가 존재하지 않습니다."
