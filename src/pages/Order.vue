@@ -1,15 +1,23 @@
 <template>
     <v-main>
         <v-container fluid>
-            <v-row align="center" justify="center">
-                <v-col cols="12"> 주문 </v-col>
+            <v-row>
+                <v-col>
+                    <OrderSearch />
+                    <OrderTable />
+                </v-col>
             </v-row>
         </v-container>
     </v-main>
 </template>
 
 <script>
-export default {};
+import OrderSearch from '../components/orders/OrderSearch.vue';
+import OrderTable from '../components/orders/OrderTable.vue';
+export default {
+    components: { OrderSearch, OrderTable },
+    name: 'Order',
+};
 </script>
 
 <style lang="scss" scoped></style>

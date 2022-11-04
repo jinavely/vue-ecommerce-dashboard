@@ -1,15 +1,21 @@
 <template>
     <v-app-bar flat app height="100" color="#f5f5f5">
         <div class="header">
-            <div class="title-info">
+            <!-- dashboard -->
+            <div
+                class="title-info"
+                v-for="item in header.filter((el) => el.path === $route.path)"
+                :key="item.id"
+            >
                 <v-toolbar-title
-                    >Welcome Back
+                    >{{ item.title }}
                     <span class="name"
-                        >노기철 <em>님</em></span
+                        >{{ item.name }}
+                        <em v-if="item.path === '/'">님</em></span
                     ></v-toolbar-title
                 >
                 <p class="description">
-                    판매 추이, 관리 및 고객 주문 예측 대시보드
+                    {{ item.description }}
                 </p>
             </div>
 
@@ -35,6 +41,59 @@ export default {
             model: null,
         },
 
+        // 타이틀
+        header: [
+            {
+                id: '0',
+                path: '/',
+                title: 'Welcome Back',
+                name: '노기철',
+                description: '판매 추이, 관리 및 고객 주문 예측 대시보드',
+            },
+            {
+                id: '1',
+                path: '/products',
+                title: 'Products',
+                name: '',
+                description: '',
+            },
+            {
+                id: '2',
+                path: '/order',
+                title: 'Orders',
+                name: '',
+                description: '',
+            },
+            {
+                id: '3',
+                path: '/delivery',
+                title: 'Delivery',
+                name: '',
+                description: '',
+            },
+            {
+                id: '4',
+                path: '/transactions',
+                title: 'Transactions',
+                name: '',
+                description: '',
+            },
+            {
+                id: '5',
+                path: '/notifications',
+                title: 'Notifications',
+                name: '',
+                description: '',
+            },
+            {
+                id: '5',
+                path: '/stats',
+                title: 'Statistics',
+                name: '',
+                description: '',
+            },
+        ],
+
         // popover
         fav: true,
         menu: false,
@@ -54,8 +113,9 @@ export default {
     .v-toolbar__content {
         align-items: flex-start;
         height: auto;
-        margin: 35px 54px 35px 54px;
+        margin: 35px 54px 0 54px;
         padding: 0;
+
         .header {
             display: flex;
             width: 100%;
@@ -63,7 +123,7 @@ export default {
 
             .title-info {
                 .v-toolbar__title {
-                    font-weight: 500;
+                    font-weight: 600;
                     font-size: 24px;
                     line-height: 28px;
                     .name {
