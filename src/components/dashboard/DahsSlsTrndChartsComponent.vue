@@ -56,7 +56,7 @@ export default {
             ],
 
             // 기간조회 데이터
-            items: ['연간', '최근 6개월', '최근 3개월', '최근 1개월'],
+            items: ['최근 12개월', '최근 6개월', '최근 3개월'],
             datePeriod: 0,
         };
     },
@@ -290,7 +290,7 @@ export default {
         // 기간선택
         selectPeriod(val) {
             switch (val) {
-                case '연간':
+                case '최근 12개월':
                     this.datePeriod = 0;
                     break;
                 case '최근 6개월':
@@ -298,9 +298,6 @@ export default {
                     break;
                 case '최근 3개월':
                     this.datePeriod = 100 / 1.2;
-                    break;
-                case '최근 1개월':
-                    this.datePeriod = 100 / 1;
                     break;
                 default:
                     this.datePeriod = 0;

@@ -24,10 +24,18 @@
                     class="search"
                     placeholder="Search"
                 ></v-text-field>
-                <v-btn dark small color="#DADADA" class="vector mx-2">
+                <a href="/login" target="_blank" class="vector mx-2">
                     <v-icon dark />
+                </a>
+                <v-btn
+                    dark
+                    small
+                    color="#DADADA"
+                    class="languge"
+                    @click="changeLocale"
+                >
+                    {{ $t('laguge') }}
                 </v-btn>
-                <v-btn dark small color="#DADADA" class="languge"> En </v-btn>
             </div>
         </div>
     </v-app-bar>
@@ -103,6 +111,12 @@ export default {
     methods: {
         click() {
             this.$emit('click', this.primaryDrawer);
+        },
+
+        // 다국어
+        changeLocale() {
+            if (this.$i18n.locale === 'en') return (this.$i18n.locale = 'ko');
+            this.$i18n.locale = 'en';
         },
     },
 };
@@ -181,6 +195,8 @@ export default {
                     border-radius: 10px;
                     padding: 0;
                     box-shadow: none;
+                    background-color: rgb(218, 218, 218);
+                    border-color: rgb(218, 218, 218);
                     .v-icon {
                         width: 38px;
                         height: 38px;

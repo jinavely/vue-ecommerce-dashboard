@@ -15,15 +15,67 @@
 <script>
 import * as echarts from 'echarts';
 let lineChart;
+const year = new Array(
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+);
+const date = new Array(
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31',
+);
+const week = new Array('일', '월', '화', '수', '목', '금', '토');
+let preid = year[new Date().getMonth()];
 
 export default {
     name: 'DahsGrsErnChartsComponent',
     components: {},
     data() {
         return {
-            // 판매액 데이터
+            saleNewData: [],
+            standardSaleNewData: [],
+
+            // 판매액 데이터 연간
             saleData: [
-                ['Price', 'Kind', 'Month'],
+                ['Price', 'Kind', 'Period'],
                 [31, 'sale', 'Now'],
                 [40, 'sale', 'Jan'],
                 [20, 'sale', 'Feb'],
@@ -38,10 +90,9 @@ export default {
                 [10, 'sale', 'Nov'],
                 [30, 'sale', 'Dec'],
             ],
-
-            // 기준판매액 데이터
+            // 기준판매액 데이터 연간
             standardSaleData: [
-                ['Price', 'Kind', 'Month'],
+                ['Price', 'Kind', 'Period'],
                 [7, 'standardSale', 'Now'],
                 [41, 'standardSale', 'Jan'],
                 [9, 'standardSale', 'Feb'],
@@ -57,12 +108,107 @@ export default {
                 [37, 'standardSale', 'Dec'],
             ],
 
+            // 판매액 데이터 월간
+            saleMonthData: [
+                ['Price', 'Kind', 'Period'],
+                [40, 'sale', '1'],
+                [20, 'sale', '2'],
+                [31, 'sale', '3'],
+                [54, 'sale', '4'],
+                [30, 'sale', '5'],
+                [17, 'sale', '6'],
+                [25, 'sale', '7'],
+                [15, 'sale', '8'],
+                [29, 'sale', '9'],
+                [35, 'sale', '10'],
+                [7, 'sale', '11'],
+                [4, 'sale', '12'],
+                [17, 'sale', '13'],
+                [40, 'sale', '14'],
+                [47, 'sale', '15'],
+                [52, 'sale', '16'],
+                [37, 'sale', '17'],
+                [57, 'sale', '18'],
+                [21, 'sale', '19'],
+                [5, 'sale', '20'],
+                [16, 'sale', '21'],
+                [13, 'sale', '22'],
+                [23, 'sale', '23'],
+                [38, 'sale', '24'],
+                [43, 'sale', '25'],
+                [23, 'sale', '26'],
+                [12, 'sale', '27'],
+                [35, 'sale', '28'],
+                [52, 'sale', '29'],
+                [42, 'sale', '30'],
+                [26, 'sale', '31'],
+            ],
+
+            // 판매액 데이터 월간
+            standardMonthSaleData: [
+                ['Price', 'Kind', 'Period'],
+                [23, 'standardSale', '1'],
+                [43, 'standardSale', '2'],
+                [56, 'standardSale', '3'],
+                [21, 'standardSale', '4'],
+                [5, 'standardSale', '5'],
+                [2, 'standardSale', '6'],
+                [16, 'standardSale', '7'],
+                [29, 'standardSale', '8'],
+                [45, 'standardSale', '9'],
+                [32, 'standardSale', '10'],
+                [9, 'standardSale', '11'],
+                [7, 'standardSale', '12'],
+                [27, 'standardSale', '13'],
+                [43, 'standardSale', '14'],
+                [22, 'standardSale', '15'],
+                [35, 'standardSale', '16'],
+                [39, 'standardSale', '17'],
+                [21, 'standardSale', '18'],
+                [26, 'standardSale', '19'],
+                [31, 'standardSale', '20'],
+                [4, 'standardSale', '21'],
+                [5, 'standardSale', '22'],
+                [54, 'standardSale', '23'],
+                [17, 'standardSale', '24'],
+                [27, 'standardSale', '25'],
+                [38, 'standardSale', '26'],
+                [56, 'standardSale', '27'],
+                [42, 'standardSale', '28'],
+                [25, 'standardSale', '29'],
+                [17, 'standardSale', '30'],
+                [7, 'standardSale', '31'],
+            ],
+
+            // 판매액 데이터 주간
+            saleWeekData: [
+                ['Price', 'Kind', 'Period'],
+                [40, 'sale', '월'],
+                [20, 'sale', '화'],
+                [31, 'sale', '수'],
+                [54, 'sale', '목'],
+                [30, 'sale', '금'],
+                [17, 'sale', '토'],
+                [25, 'sale', '일'],
+            ],
+            // 기준판매액 데이터 주간
+            standardWeekSaleData: [
+                ['Price', 'Kind', 'Period'],
+                [41, 'standardSale', '월'],
+                [9, 'standardSale', '화'],
+                [22, 'standardSale', '수'],
+                [43, 'standardSale', '목'],
+                [45, 'standardSale', '금'],
+                [22, 'standardSale', '토'],
+                [12, 'standardSale', '일'],
+            ],
+
             // 기간조회 데이터
-            items: ['연간', '최근 6개월', '최근 3개월', '최근 1개월'],
-            datePeriod: 0,
+            items: ['연간', '월간', '주간'],
         };
     },
     mounted() {
+        this.yearSelect();
         this.chartFnctn();
 
         window.addEventListener('resize', this.handleChartResize);
@@ -93,11 +239,11 @@ export default {
                 dataset: [
                     {
                         id: 'dataset_sale_raw',
-                        source: this.saleData,
+                        source: this.saleNewData,
                     },
                     {
                         id: 'dataset_standard_sale_raw',
-                        source: this.standardSaleData,
+                        source: this.standardSaleNewData,
                     },
                     {
                         id: 'dataset_sale',
@@ -183,6 +329,29 @@ export default {
                     axisTick: {
                         show: false,
                     },
+                    axisPointer: {
+                        value: preid,
+                        snap: true,
+                        triggerTooltip: false,
+                        lineStyle: {
+                            color: '#000',
+                            width: 1,
+                        },
+                        label: {
+                            show: true,
+                            formatter: function (params) {
+                                return params.value === preid
+                                    ? `Today`
+                                    : `${params.value}`;
+                            },
+                            backgroundColor: '#7581BD',
+                        },
+                        handle: {
+                            show: true,
+                            color: '#7581BD',
+                            icon: 'none',
+                        },
+                    },
                 },
                 yAxis: {
                     name: '',
@@ -200,10 +369,12 @@ export default {
                         lineStyle: {
                             color: '#EB410B',
                         },
+                        z: 1,
+                        zlevel: 1,
                         encode: {
-                            x: 'Month',
+                            x: 'Period',
                             y: 'Price',
-                            itemName: 'Month',
+                            itemName: 'Period',
                             tooltip: ['Price'],
                         },
                         endLabel: {
@@ -229,10 +400,12 @@ export default {
                         lineStyle: {
                             color: '#017EFA',
                         },
+                        z: 1,
+                        zlevel: 1,
                         encode: {
-                            x: 'Month',
+                            x: 'Period',
                             y: 'Price',
-                            itemName: 'Month',
+                            itemName: 'Period',
                             tooltip: ['Price'],
                         },
                         endLabel: {
@@ -274,22 +447,34 @@ export default {
         },
 
         // 기간선택
+        yearSelect() {
+            this.saleNewData = this.saleData;
+            this.standardSaleNewData = this.standardSaleData;
+            preid = year[new Date().getMonth()];
+        },
+        monthSelect() {
+            this.saleNewData = this.saleMonthData;
+            this.standardSaleNewData = this.standardMonthSaleData;
+            preid = date[new Date().getDate() - 1];
+        },
+        weekSelect() {
+            this.saleNewData = this.saleWeekData;
+            this.standardSaleNewData = this.standardWeekSaleData;
+            preid = week[new Date().getDay()];
+        },
         selectPeriod(val) {
             switch (val) {
                 case '연간':
-                    this.datePeriod = 0;
+                    this.yearSelect();
                     break;
-                case '최근 6개월':
-                    this.datePeriod = 100 / 1.7;
+                case '월간':
+                    this.monthSelect();
                     break;
-                case '최근 3개월':
-                    this.datePeriod = 100 / 1.2;
-                    break;
-                case '최근 1개월':
-                    this.datePeriod = 100 / 1;
+                case '주간':
+                    this.weekSelect();
                     break;
                 default:
-                    this.datePeriod = 0;
+                    this.yearSelect();
                     break;
             }
             if (

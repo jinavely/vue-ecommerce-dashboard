@@ -2,7 +2,32 @@
     <v-row>
         <v-col>
             <v-row>
-                <v-col class="table-title"> 당일 매출 현황 </v-col>
+                <v-col class="table-title">
+                    <v-card
+                        class="d-flex align-center"
+                        flat
+                        tile
+                        color="transparent"
+                    >
+                        <v-card class="mr-auto" flat tile color="transparent">
+                            당일 매출 현황
+                        </v-card>
+                        <v-card class="pr-2" flat tile color="transparent">
+                            <v-btn elevation="2" color="#fff">
+                                <v-icon left dark> mdi-refresh </v-icon>
+                                Refresh
+                            </v-btn>
+                        </v-card>
+                        <v-card flat tile color="transparent">
+                            <v-btn elevation="2" color="#fff">
+                                <v-icon left dark color="green">
+                                    mdi-file-excel
+                                </v-icon>
+                                엑셀다운로드
+                            </v-btn>
+                        </v-card>
+                    </v-card>
+                </v-col>
             </v-row>
             <v-row>
                 <v-col class="table">
