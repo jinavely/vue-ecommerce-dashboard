@@ -24,9 +24,9 @@
                     class="search"
                     placeholder="Search"
                 ></v-text-field>
-                <a href="/login" target="_blank" class="vector mx-2">
+                <router-link to="/login" class="vector mx-2">
                     <v-icon dark />
-                </a>
+                </router-link>
                 <v-btn
                     dark
                     small
