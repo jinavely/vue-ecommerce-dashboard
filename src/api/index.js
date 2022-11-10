@@ -1,30 +1,11 @@
 import axios from 'axios';
 
-const port = '4000';
-
 const instance = axios.create({
-    baseURL: `http://localhost:${port}`
+    baseURL: process.env.VUE_APP_API_URL,
 });
 
-const getMyClass = async () => {
-    return instance.get('/myclass');
+const getInfoDashboard = async () => {
+    return instance.get('/dashboard-info');
 };
 
-const getMdClass = () => {
-    return instance.get('/md-class');
-};
-
-const getTopTenClass = () => {
-    return instance.get('/top10-class');
-};
-
-const getLastestList = () => {
-    return instance.get('/lastest-class');
-};
-
-export {
-    getMyClass,
-    getMdClass,
-    getTopTenClass,
-    getLastestList,
-};
+export { getInfoDashboard };
