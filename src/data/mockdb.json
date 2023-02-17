@@ -1,5 +1,5 @@
 {
-    "dashboard-info": [
+    "total-info": [
         {
             "id": "0",
             "title": "New Orders",
@@ -44,6 +44,199 @@
             "up": true,
             "info": "12.20",
             "standard": "전년대비"
+        }
+    ],
+
+    "member-tbl": [
+        {
+            "sn": 1,
+            "orderDate": "2022.10.11 23:12:15",
+            "orderNumber": "001-A041568457",
+            "orderer": "노기철",
+            "id": "nobaksa",
+            "productName": "퓨어러브 블라우스",
+            "productPrice": 100000,
+            "orderPrice": 100000,
+            "deliveryStatus": "배송중",
+            "recipient": "노기순",
+            "address": "서울 동대문구 고산자로 124 제기한신 12-101",
+            "sellphone": "010-2345-1256",
+            "avatar": "https://images.pexels.com/photos/2859616/pexels-photo-2859616.jpeg"
+        },
+        {
+            "sn": 2,
+            "orderDate": "2022.10.11 23:12:15",
+            "orderNumber": "001-A041568457",
+            "orderer": "노기철",
+            "id": "nobaksa",
+            "productName": "브룩클린 슬래이트 토테",
+            "productPrice": 39800,
+            "orderPrice": 39800,
+            "deliveryStatus": "배송완료",
+            "recipient": "노기순",
+            "address": "서울 동대문구 고산자로 124 제기한신 12-101",
+            "sellphone": "010-2345-1256",
+            "avatar": "https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg"
+        },
+        {
+            "sn": 3,
+            "orderDate": "2022.10.11 23:12:15",
+            "orderNumber": "001-A041568457",
+            "orderer": "노기철",
+            "id": "nobaksa",
+            "productName": "빈티지 치즈 오일",
+            "productPrice": 198000,
+            "orderPrice": 198000,
+            "deliveryStatus": "미발송",
+            "recipient": "노기순",
+            "address": "서울 동대문구 고산자로 124 제기한신 12-101",
+            "sellphone": "010-2345-1256",
+            "avatar": "https://images.pexels.com/photos/2738929/pexels-photo-2738929.jpeg"
+        },
+        {
+            "sn": 4,
+            "orderDate": "2022.10.11 23:12:15",
+            "orderNumber": "001-A041568457",
+            "orderer": "노기철",
+            "id": "nobaksa",
+            "productName": "하드 타입 치즈 나이프",
+            "productPrice": 12000,
+            "orderPrice": 12000,
+            "deliveryStatus": "배송보류",
+            "recipient": "노기순",
+            "address": "서울 동대문구 고산자로 124 제기한신 12-101",
+            "sellphone": "010-2345-1256",
+            "avatar": "https://images.pexels.com/photos/3536991/pexels-photo-3536991.jpeg"
+        },
+        {
+            "sn": 5,
+            "orderDate": "2022.10.11 23:12:15",
+            "orderNumber": "001-A041568457",
+            "orderer": "노기철",
+            "id": "nobaksa",
+            "productName": "우드 바틀 오프너",
+            "productPrice": 125000,
+            "orderPrice": 125000,
+            "deliveryStatus": "취소요청",
+            "recipient": "노기순",
+            "address": "서울 동대문구 고산자로 124 제기한신 12-101",
+            "sellphone": "010-2345-1256",
+            "avatar": "https://images.pexels.com/photos/3660029/pexels-photo-3660029.jpeg"
+        },
+        {
+            "sn": 6,
+            "orderDate": "2022.10.11 23:12:15",
+            "orderNumber": "001-A041568457",
+            "orderer": "노기철",
+            "id": "nobaksa",
+            "productName": "하드 타입 치즈 나이프",
+            "productPrice": 10000,
+            "orderPrice": 10000,
+            "deliveryStatus": "반품요청",
+            "recipient": "노기순",
+            "address": "서울 동대문구 고산자로 124 제기한신 12-101",
+            "sellphone": "010-2345-1256",
+            "avatar": "https://images.pexels.com/photos/3561145/pexels-photo-3561145.jpeg"
+        },
+        {
+            "sn": 7,
+            "orderDate": "2022.10.11 23:12:15",
+            "orderNumber": "001-A041568457",
+            "orderer": "노기철",
+            "id": "nobaksa",
+            "productName": "빈티지 치즈 오일",
+            "productPrice": 78000,
+            "orderPrice": 78000,
+            "deliveryStatus": "반품완료",
+            "recipient": "노기순",
+            "address": "서울 동대문구 고산자로 124 제기한신 12-101",
+            "sellphone": "010-2345-1256",
+            "avatar": "https://images.pexels.com/photos/2836486/pexels-photo-2836486.jpeg"
+        }
+    ],
+
+    "custmer-status": {
+        "newCustomer": "55",
+        "newVariation": 5,
+        "oldCustomer": "350",
+        "oldVariation": 25
+    },
+
+    "store-sales": [
+        {
+            "id": 0,
+            "area": "서울",
+            "office": "동부지점",
+            "price": 21037042,
+            "spcfcGrvty": 24
+        },
+        {
+            "id": 1,
+            "area": "서울",
+            "office": "강남지점",
+            "price": 24256325,
+            "spcfcGrvty": 24
+        },
+        {
+            "id": 2,
+            "area": "경기",
+            "office": "판교지점",
+            "price": 323321421,
+            "spcfcGrvty": 52
+        },
+        {
+            "id": 3,
+            "area": "서울",
+            "office": "서부지점",
+            "price": 23345000,
+            "spcfcGrvty": 20
+        }
+    ],
+    "top-category": [
+        {
+            "id": 0,
+            "price": 2200000,
+            "name": "패션/의류"
+        },
+        {
+            "id": 1,
+            "price": 2600000,
+            "name": "뷰티"
+        },
+        {
+            "id": 3,
+            "price": 1300000,
+            "name": "출산/유아동"
+        },
+        {
+            "id": 4,
+            "price": 2100000,
+            "name": "식품"
+        },
+        {
+            "id": 5,
+            "price": 1450000,
+            "name": "홈인테리어"
+        },
+        {
+            "id": 6,
+            "price": 2300000,
+            "name": "가전디지털"
+        },
+        {
+            "id": 7,
+            "price": 1700000,
+            "name": "헬스/건강식품"
+        },
+        {
+            "id": 8,
+            "price": 1600000,
+            "name": "여행/티켓"
+        },
+        {
+            "id": 9,
+            "price": 2400000,
+            "name": "자동차용품"
         }
     ]
 }

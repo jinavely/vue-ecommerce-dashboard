@@ -4,8 +4,8 @@ const instance = axios.create({
     baseURL: process.env.VUE_APP_API_URL,
 });
 
-const getInfoDashboard = async () => {
-    return instance.get('/dashboard-info');
+const getProjectLists = async () => {
+    return instance.get('/project-list');
 };
 
-export { getInfoDashboard };
+export { getProjectLists };

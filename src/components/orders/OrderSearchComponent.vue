@@ -23,6 +23,7 @@
                                 flat
                                 outlined
                                 solo
+                                v-model="search"
                             ></v-text-field>
                         </v-card>
                     </v-card>
@@ -93,6 +94,8 @@ export default {
     name: 'OrderSearch',
     data() {
         return {
+            search: '',
+
             form: {
                 searchItems: [
                     '주문번호',

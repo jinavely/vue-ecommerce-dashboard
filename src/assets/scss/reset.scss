@@ -14,7 +14,6 @@ body {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    overflow: auto !important;
 }
 
 h1,
@@ -66,35 +65,30 @@ img {
 *,
 *:after,
 *:before {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', 'GmarketSansMedium', system-ui, -apple-system,
-        Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji,
-        Segoe UI Emoji;
+    font-family: 'GmarketSansMedium', system-ui, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
 }
 
-#app {
-    font-family: 'Roboto', 'GmarketSansMedium', system-ui, -apple-system,
-        Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji,
-        Segoe UI Emoji;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #000;
-}
 strong {
     font-weight: bold;
 }
-::-webkit-scrollbar {
-    width: 10px;
-    height: 7px;
-}
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-}
-::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px #fff;
+::v-deep {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: inset 0px 0px 5px #fff;
+    }
 }

@@ -1,44 +1,47 @@
 <template>
     <v-row class="dash-cards">
-        <!-- <v-col md="7">
+        <v-col md="7">
+            <v-row>
+                <v-col v-for="item in totalInfo.slice(0, 3)" :key="item.id">
+                    <DashInfoComponent :item="item" />
+                </v-col>
+            </v-row>
+        </v-col>
+
+        <v-col md="5">
             <v-row>
                 <v-col
-                    v-for="item in this.$store.state.dashboard.infoData.slice(
-                        0,
-                        3,
-                    )"
+                    v-for="item in this.totalInfo.slice(3, 5)"
                     :key="item.id"
                 >
                     <DashInfoComponent :item="item" />
                 </v-col>
             </v-row>
-        </v-col> -->
-        <!-- <v-col md="5">
-            <v-row>
-                <v-col v-for="item in this.infoData.slice(3, 5)" :key="item.id">
-                    <DashInfoComponent :item="item" />
-                </v-col>
-            </v-row>
-        </v-col> -->
-        <label>{{ getDashInfo }}</label>
+        </v-col>
     </v-row>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import DashInfoComponent from './DashInfoComponent.vue';
+import { getTotalInfo } from '@/api/index';
 
-// import DashInfoComponent from './DashInfoComponent.vue';
 export default {
     name: 'StatusInfoContainer',
-    components: {},
+    components: { DashInfoComponent },
     data() {
-        return {};
+        return {
+            totalInfo: [],
+        };
     },
-    computed: {
-        ...mapGetters(['getDashInfo']),
+    created() {
+        this.fetchTotalInfo();
     },
-
-    methods: {},
+    methods: {
+        async fetchTotalInfo() {
+            const { data } = await getTotalInfo();
+            this.totalInfo = data;
+        },
+    },
 };
 </script>
 

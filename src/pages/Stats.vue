@@ -1,15 +1,23 @@
 <template>
-    <v-main>
-        <v-container fluid>
-            <v-row align="center" justify="center">
-                <v-col cols="12"> 통계 </v-col>
-            </v-row>
-        </v-container>
-    </v-main>
+    <v-container fluid>
+        <StatisticsContainer />
+    </v-container>
 </template>
 
 <script>
-export default {};
+import StatisticsContainer from '../components/statistics/StatisticsContainer.vue';
+
+export default {
+    components: {
+        StatisticsContainer,
+    },
+    data() {
+        return {};
+    },
+    created() {},
+    mounted() {},
+    methods: {},
+};
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

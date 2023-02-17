@@ -1,6 +1,6 @@
-import { getInfoDashboard } from '../../api';
+import { getTotalInfo } from '../../api';
 
-const dashboardInfo = {
+const dashboard = {
     namespaced: true,
     state: () => ({
         // 대시보드 상위
@@ -16,7 +16,8 @@ const dashboardInfo = {
         // 대시보드 상위
         async FETCH_DASHINFO(context) {
             try {
-                const { data } = await getInfoDashboard();
+                const { data } = await getTotalInfo();
+                console.log(data);
                 context.commit('SET_INFO', data);
             } catch (error) {
                 console.warn(error);
@@ -24,4 +25,4 @@ const dashboardInfo = {
         },
     },
 };
-export default { dashboardInfo };
+export default { dashboard };

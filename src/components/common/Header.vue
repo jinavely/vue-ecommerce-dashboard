@@ -1,18 +1,7 @@
 <template>
-    <v-app-bar flat app height="100" color="#f5f5f5">
+    <v-app-bar flat app color="#f5f5f5">
         <div class="header">
             <!-- dashboard -->
-            <div
-                class="title-info"
-                v-for="item in header.filter((el) => el.path === $route.path)"
-                :key="item.id"
-            >
-                <v-toolbar-title>{{ item.title }}</v-toolbar-title>
-                <p class="description">
-                    {{ item.description }}
-                </p>
-            </div>
-
             <div class="controls">
                 <div class="login">
                     <router-link to="/login" v-if="!login.show">

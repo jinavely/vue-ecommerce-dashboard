@@ -37,7 +37,12 @@ export default {
         return {
             search: '',
             headers: [
-                { text: '순서', align: 'center', value: 'number', width: '80px' },
+                {
+                    text: '순서',
+                    align: 'center',
+                    value: 'number',
+                    width: '80px',
+                },
                 {
                     text: '주문자',
                     align: 'start',

@@ -1,11 +1,9 @@
 <template>
-    <v-main>
-        <v-container fluid>
-            <StatusInfoContainer />
-            <StatusPlateContainer />
-            <StatusChartsContainer />
-        </v-container>
-    </v-main>
+    <v-container fluid>
+        <StatusInfoContainer />
+        <StatusPlateContainer />
+        <StatusChartsContainer />
+    </v-container>
 </template>
 
 <script>

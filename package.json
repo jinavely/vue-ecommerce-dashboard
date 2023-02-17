@@ -5,9 +5,14 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "lint": "vue-cli-service lint",
+        "db": "json-server --watch ./src/data/mockdb.json --port 5000",
+        "storybook": "start-storybook -p 6006"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.2.1",
+        "@fortawesome/free-solid-svg-icons": "^6.2.1",
+        "@fortawesome/vue-fontawesome": "^2.0.9",
         "@mdi/font": "^7.0.96",
         "axios": "^0.22.0",
         "core-js": "^3.6.5",
@@ -29,10 +34,20 @@
         "vuex": "^3.6.2"
     },
     "devDependencies": {
+        "@babel/core": "^7.20.7",
+        "@storybook/addon-actions": "^6.5.15",
+        "@storybook/addon-essentials": "^6.5.15",
+        "@storybook/addon-interactions": "^6.5.15",
+        "@storybook/addon-links": "^6.5.15",
+        "@storybook/builder-webpack4": "^6.5.15",
+        "@storybook/manager-webpack4": "^6.5.15",
+        "@storybook/testing-library": "^0.0.13",
+        "@storybook/vue": "^6.5.15",
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-eslint": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
         "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.3.0",
         "eslint": "^6.7.2",
         "eslint-plugin-vue": "^6.2.2",
         "node-sass": "^7.0.3",

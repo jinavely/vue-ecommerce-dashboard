@@ -1,21 +1,13 @@
 <template>
-    <v-main>
-        <v-container fluid>
-            <v-row>
-                <v-col>
-                    <OrderSearch />
-                    <OrderTable />
-                </v-col>
-            </v-row>
-        </v-container>
-    </v-main>
+    <v-container fluid>
+        <OrderContainer />
+    </v-container>
 </template>
 
 <script>
-import OrderSearch from '../components/orders/OrderSearch.vue';
-import OrderTable from '../components/orders/OrderTable.vue';
+import OrderContainer from '../components/orders/OrderContainer.vue';
 export default {
-    components: { OrderSearch, OrderTable },
+    components: { OrderContainer },
     name: 'Order',
 };
 </script>
